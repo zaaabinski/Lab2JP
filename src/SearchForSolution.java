@@ -39,11 +39,20 @@ public class SearchForSolution {
         for (Project p : this.projectSet) {
             helpSolution.add(new Project(p));
         }
-
         ArrayList<Project> newSolution = new ArrayList<>(helpSolution);
         Collections.shuffle(newSolution);
 
-        return Workplace.StartSimulatingStaff(this.staffSet, newSolution);
+        ArrayList<Staff> copiedStaff = new ArrayList<>();
+        for (Staff s : this.staffSet) {
+            copiedStaff.add(new Staff(s));  // Deep copy each staff member
+        }
+        ArrayList<Staff> newStaff = new ArrayList<>(copiedStaff);
+        Collections.shuffle(newStaff);
+        for(Staff s : newStaff) {
+            System.out.println(s.GetStaffNumber());
+        }
+        System.out.println();
+        return Workplace.StartSimulatingStaff(newStaff, newSolution);
     }
 
     private float CalculateValueOfSolution(ArrayList<Project> solution) {
@@ -71,5 +80,4 @@ public class SearchForSolution {
         }
         return n * Factorial(n - 1);
     }
-
 }

@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Staff {
     private ArrayList<String> technologyPerEmp;
     private String staffNumber;
     private int projectsWorkedOn;
     private String workingAt;
+    private String projectThatStaffWorksOn;
 
     public Staff(String empNumber, ArrayList<String> givenProfession) {
         staffNumber = empNumber;
@@ -20,12 +22,21 @@ public class Staff {
         this.workingAt = s.workingAt;
     }
 
-    public boolean CanWork() {
+    public void AddProjectThatStaffWorksOn(String str)
+    {
+        this.projectThatStaffWorksOn=str;
+    }
+
+    public boolean CanWork(String p,String t) {
         if (projectsWorkedOn == 0) {
             return true;
         } else if (projectsWorkedOn == 1 && IsSpecialClass()) {
             return true;
-        } else {
+        } else if(Objects.equals(this.projectThatStaffWorksOn, p) && !Objects.equals(t, workingAt) && projectsWorkedOn == 1)
+        {
+            return true;
+        }
+         else {
             return false;
         }
     }
