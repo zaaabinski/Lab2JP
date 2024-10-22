@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PlsWorkNow:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PlsWorkNow_jar</output-path>
+    <root id="archive" name="PlsWorkNow.jar">
+      <element id="module-output" name="PlsWorkNow" />
+    </root>
+  </artifact>
+</component>
