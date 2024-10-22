@@ -1,9 +1,9 @@
-Lab2
-Aplikacja dotyczy stworzenia systemu maksymalizującego efektywność firm wytwarzających oprogramowanie IT.
+## Lab2
+Aplikacja dotyczy stworzenia systemu **maksymalizującego efektywność firm wytwarzających oprogramowanie IT**.
 
 Firmy typu Software House realizują szereg projektów dla swoich klientów posiadając do dyspozycji pracowników o różnych kwalifikacjach. Algorytm powinien przypisać ludzi do odpowiednich projektów, aby zminimalizować braki ludzkie.
-
-Przykładowy plik wejściowy
+### Przykładowy plik wejściowy
+```
 PROJECTS
 P1: JAVA JAVA QA PM
 P2: PYTHON QA PM
@@ -22,9 +22,10 @@ R7: PM
 R8: JAVA PYTHON
 R9: QA
 R10: BLOCKCHAIN PM QA
+```
+
 Wynikiem działania algorytmu jest przypisanie odpowiednich ludzi do projektu zgodnie z następującymi założeniami:
 
-QA i PM mogą pracować jednocześnie na maksymalnie dwóch projektach (jeśli to ich jedyna cecha).
-Pozostałe stanowiska pracują tylko na jednym projekcie
-Jedna osoba może pełnić podwójną rolę w danym projekcie (np. QA i PM)
-Algorytm powinien definiować odpowiednią funkcję dopasowania (miara efektywności danej kombinacji) a następnie podejmować odpowiednie akcje w celu jej optymalizacji.
+1. `QA` i `PM` mogą pracować jednocześnie na maksymalnie dwóch projektach (jeśli to ich jedyna cecha).
+2. Pozostałe stanowiska pracują tylko na jednym projekcie
+3. Jedna osoba może pełnić podwójną rolę w danym projekcie (np. `QA` i `PM`)
