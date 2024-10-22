@@ -4,7 +4,7 @@ import java.util.*;
 
 public class FileHandler {
 
-    public String filePath;
+    private String filePath;
 
     public FileHandler(String pathToFile) {
         this.filePath = pathToFile;
@@ -21,7 +21,6 @@ public class FileHandler {
             return false;
         }
     }
-
 
     public ArrayList<Staff> GetStaff() throws FileNotFoundException
     {

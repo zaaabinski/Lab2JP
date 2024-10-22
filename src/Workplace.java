@@ -11,7 +11,6 @@ public class Workplace {
         }
 
         for (Project p : projectSet) {
-
             //set of technologies for each project
             ArrayList<String> workplacesToAsign = p.GetTechnologiesNeeded();
             for (Staff staffPerson : copiedStaff) {
