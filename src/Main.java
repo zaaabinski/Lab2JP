@@ -1,7 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
@@ -46,7 +45,7 @@ public class Main {
         for(Project p : projects)
         {
             System.out.println("For project : " + p.GetProjectNumber());
-            if(p.assignedStaff.isEmpty())
+            if(p.GetAssignedStaff().isEmpty())
             {
                 System.out.println("No staff assigned");
             }
@@ -56,7 +55,7 @@ public class Main {
             }
             if(p.GetWorkplacesSet()==p.GetWorkPlacesNumber())
             {
-                System.out.println("All things set for the project");
+                System.out.println("All staff set for the project");
             }
             System.out.println();
         }

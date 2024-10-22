@@ -4,10 +4,9 @@ public class Project {
 
     private String projectNumber;
     private ArrayList<String> technologyNeeded;
-    public ArrayList<String> assignedStaff;
+    private ArrayList<String> assignedStaff;
     private int DoneWorkPlaces;
     private int workPlaces;
-
 
     public Project(String projectName, ArrayList<String> listOfProjects) {
         projectNumber = projectName;
@@ -15,6 +14,7 @@ public class Project {
         workPlaces = technologyNeeded.size();
         assignedStaff = new ArrayList<>();
     }
+
     public Project(Project p)
     {
         this.projectNumber = p.projectNumber;
@@ -40,6 +40,7 @@ public class Project {
     public ArrayList<String> GetTechnologiesNeeded() {
         return this.technologyNeeded;
     }
+
     public ArrayList<String> GetAssignedStaff() {
         return this.assignedStaff;
     }
@@ -52,10 +53,12 @@ public class Project {
     {
         return this.DoneWorkPlaces;
     }
+
     public void IncreaseWorkplaces()
     {
         this.DoneWorkPlaces++;
     }
+
     public String GetProjectNumber()
     {
         return this.projectNumber;
