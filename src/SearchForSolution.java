@@ -18,7 +18,7 @@ public class SearchForSolution {
         float newValue;
         System.out.println("Starting best solution :" + valueOfBest);
 
-        for (int i = 0; i < Factorial(this.projectSet.size()); i++) {
+        for (int i = 0; i <Factorial(this.projectSet.size()); i++) {
             newSolution = GenerateNewSolution();
             newValue = CalculateValueOfSolution(newSolution);
 
@@ -48,10 +48,6 @@ public class SearchForSolution {
         }
         ArrayList<Staff> newStaff = new ArrayList<>(copiedStaff);
         Collections.shuffle(newStaff);
-        for(Staff s : newStaff) {
-            System.out.println(s.GetStaffNumber());
-        }
-        System.out.println();
         return Workplace.StartSimulatingStaff(newStaff, newSolution);
     }
 

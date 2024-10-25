@@ -9,33 +9,23 @@ public class Main {
             System.out.println("Too many arguments");
             System.exit(-1);
         }
-        else if(args[0].equals("-h"))
+         if(args[0].equals("-h"))
         {
             System.out.println("Usage: java -jar main.jar <Project and staff .txt file>");
             System.exit(0);
         }
-        else if(args[0].startsWith("C"))
-        {
-            FileHandler FH = new FileHandler(args[0]);
-            boolean validFile = FH.Validate();
-            if (!validFile)
-            {
-                System.out.println("Wrong file path");
-            }
-            else
-            {
-                ArrayList<Staff> staff = FH.GetStaff();
-                ArrayList<Project> projects = FH.GetProjects();
+         try {
+             FileHandler FH = new FileHandler(args[0]);
+                 ArrayList<Staff> staff = FH.GetStaff();
+                 ArrayList<Project> projects = FH.GetProjects();
 
-                SearchForSolution SFS = new SearchForSolution(staff,projects);
+                 SearchForSolution SFS = new SearchForSolution(staff, projects);
 
-                ArrayList<Project> bestSolution = SFS.StartSearching();
+                 ArrayList<Project> bestSolution = SFS.StartSearching();
 
-                ShowResult(bestSolution);
-            }
-        }
-        else
-        {
+                 ShowResult(bestSolution);
+         }
+         catch(FileNotFoundException e) {
             System.out.println("Wrong arguments use -h if you need help");
         }
     }
