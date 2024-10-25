@@ -5,10 +5,6 @@ public class Workplace {
     public static ArrayList<Project> StartSimulatingStaff(ArrayList<Staff> staffSet, ArrayList<Project> projectSet) {
 
         ArrayList<Project> newSolution = new ArrayList<>();
-
-
-
-
         for (Project p : projectSet) {
             //set of technologies for each project
             ArrayList<String> workplacesToAsign = p.GetTechnologiesNeeded();
