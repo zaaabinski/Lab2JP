@@ -1,70 +1,77 @@
 import java.util.*;
 
 public class SearchForSolution {
-    private ArrayList<Staff> staffSet;
-    private ArrayList<Project> projectSet;
+    private ArrayList<Staff> staffList;
+    private ArrayList<Project> projectList;
 
-    public SearchForSolution(ArrayList<Staff> staffSet, ArrayList<Project> projectSet) {
-        this.staffSet = staffSet;
-        this.projectSet = projectSet;
+    public SearchForSolution(ArrayList<Staff> staffList, ArrayList<Project> projectList) {
+        this.staffList = staffList;
+        this.projectList = projectList;
     }
 
     public ArrayList<Project> StartSearching() {
-        ArrayList<Project> bestSolution = GenerateNewSolution();
+        ArrayList<Project> bestProjectArrangement = GenerateNewArrangement();
 
-        ArrayList<Project> newSolution;
+        ArrayList<Project> newProjectArrangement;
 
-        float valueOfBest = CalculateValueOfSolution(bestSolution);
-        float newValue;
-        System.out.println("Starting best solution :" + valueOfBest);
+        float valueOfBestProjectArrangement = CalculateValueOfProjectArrangement(bestProjectArrangement);
+        float valueOfNewProjectArrangement;
 
-        for (int i = 0; i <Factorial(this.projectSet.size()); i++) {
-            newSolution = GenerateNewSolution();
-            newValue = CalculateValueOfSolution(newSolution);
+        System.out.println("Starting best arrangement :" + valueOfBestProjectArrangement);
 
-            if (newValue > valueOfBest) {
-                System.out.println("Found new best solution : " + newValue + " last was + " + valueOfBest);
-                bestSolution = newSolution;
-                valueOfBest = newValue;
+        for (int i = 0; i <Factorial(this.projectList.size()); i++) {
+
+            newProjectArrangement = GenerateNewArrangement();
+            valueOfNewProjectArrangement = CalculateValueOfProjectArrangement(newProjectArrangement);
+
+            if (valueOfNewProjectArrangement > valueOfBestProjectArrangement) {
+
+                System.out.println("Found new best arrangement : " + valueOfNewProjectArrangement + " last was + " + valueOfBestProjectArrangement);
+
+                bestProjectArrangement = newProjectArrangement;
+                valueOfBestProjectArrangement = valueOfNewProjectArrangement;
             }
         }
-
+        
         System.out.print("\nFinished searching for solution the value is : ");
-        System.out.println(valueOfBest);
-        return bestSolution;
+        System.out.println(valueOfBestProjectArrangement);
+        return bestProjectArrangement;
     }
 
-    private ArrayList<Project> GenerateNewSolution() {
-        ArrayList<Project> helpSolution = new ArrayList<>();
-        for (Project p : this.projectSet) {
-            helpSolution.add(new Project(p));
+    private ArrayList<Project> GenerateNewArrangement() {
+
+        ArrayList<Project> helpArrangement = new ArrayList<>();
+        for (Project p : this.projectList) {
+            helpArrangement.add(new Project(p));
         }
-        ArrayList<Project> newSolution = new ArrayList<>(helpSolution);
-        Collections.shuffle(newSolution);
+
+        ArrayList<Project> newProjectArrangement = new ArrayList<>(helpArrangement);
+        Collections.shuffle(newProjectArrangement);
 
         ArrayList<Staff> copiedStaff = new ArrayList<>();
-        for (Staff s : this.staffSet) {
+        for (Staff s : this.staffList) {
             copiedStaff.add(new Staff(s));  // Deep copy each staff member
         }
+
         ArrayList<Staff> newStaff = new ArrayList<>(copiedStaff);
         Collections.shuffle(newStaff);
-        return Workplace.StartSimulatingStaff(newStaff, newSolution);
+        return Workplace.StartSimulatingStaff(newStaff, newProjectArrangement);
     }
 
-    private float CalculateValueOfSolution(ArrayList<Project> solution) {
+    private float CalculateValueOfProjectArrangement(ArrayList<Project> arrangement) {
         float value = 0f;
 
         float ptsForFullProject = 20f;
 
-        for (int i = 0; i < solution.size(); i++) {
+        for (int i = 0; i < arrangement.size(); i++) {
             float help = 0f;
-            if (solution.get(i).CalculateFreeWorkSpace() == 100) {
+            if (arrangement.get(i).CalculateFreeWorkSpace() == 100) {
                 help += ptsForFullProject;
             }
-            help += solution.get(i).GetWorkplacesSet();
-            help += (solution.get(i).GetWorkPlacesNumber() - solution.get(i).GetWorkplacesSet());
+            help += arrangement.get(i).GetWorkplacesSet();
+            help += (arrangement.get(i).GetWorkPlacesNumber() - arrangement.get(i).GetWorkplacesSet());
 
-            value += help * solution.get(i).CalculateFreeWorkSpace();
+            value += help * arrangement.get(i).CalculateFreeWorkSpace();
 
         }
         return value;

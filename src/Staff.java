@@ -2,10 +2,15 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Staff {
-    private ArrayList<String> technologyPerEmp;
+    //id of the staff
     private String staffNumber;
+    //technolgy that each employee is skilled at
+    private ArrayList<String> technologyPerEmp;
+    //number of projects that staff is curently working on
     private int projectsWorkedOn;
+    //at what technology does staff work
     private String workingAt;
+    //what project is staff working at, used at telling if he can work at certain place again
     private String projectThatStaffWorksOn;
 
     public Staff(String empNumber, ArrayList<String> givenProfession) {
@@ -72,5 +77,10 @@ public class Staff {
     public void IncreaseProjectsWorkedOn()
     {
         projectsWorkedOn++;
+    }
+
+    public int GetProjectsWorkedOn()
+    {
+        return projectsWorkedOn;
     }
 }

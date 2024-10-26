@@ -1,11 +1,15 @@
 import java.util.*;
 
 public class Project {
-
+    //id of the project
     private String projectNumber;
+    //technologies required to fulfill the project
     private ArrayList<String> technologyNeeded;
+    //staff already assigned to do the project
     private ArrayList<String> assignedStaff;
-    private int DoneWorkPlaces;
+    //how many workpalces are found
+    private int foundWorkPlaces;
+    //how many workplaces are there to be set
     private int workPlaces;
 
     public Project(String projectName, ArrayList<String> listOfProjects) {
@@ -19,7 +23,7 @@ public class Project {
     {
         this.projectNumber = p.projectNumber;
         this.technologyNeeded = new ArrayList<>(p.technologyNeeded); // Deep copy the list
-        this.DoneWorkPlaces = p.DoneWorkPlaces;
+        this.foundWorkPlaces = p.foundWorkPlaces;
         this.workPlaces = technologyNeeded.size();
         this.assignedStaff = new ArrayList<>(p.assignedStaff);
     }
@@ -29,12 +33,12 @@ public class Project {
     }
 
     public int GetDoneWorkPlaces() {
-        return this.DoneWorkPlaces;
+        return this.foundWorkPlaces;
     }
 
     public Float CalculateFreeWorkSpace()
     {
-        return ((float)this.DoneWorkPlaces /this.workPlaces) * 100f;
+        return ((float)this.foundWorkPlaces /this.workPlaces) * 100f;
     }
 
     public ArrayList<String> GetTechnologiesNeeded() {
@@ -51,12 +55,12 @@ public class Project {
 
     public int GetWorkplacesSet()
     {
-        return this.DoneWorkPlaces;
+        return this.foundWorkPlaces;
     }
 
     public void IncreaseWorkplaces()
     {
-        this.DoneWorkPlaces++;
+        this.foundWorkPlaces++;
     }
 
     public String GetProjectNumber()

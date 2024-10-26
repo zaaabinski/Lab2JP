@@ -11,17 +11,6 @@ public class FileHandler {
         System.out.println("File path: " + filePath);
     }
 
-    public boolean Validate() {
-        File inputFile = new File(filePath);
-        try {
-            Scanner fileScanner = new Scanner(inputFile);
-            return true;
-        } catch (FileNotFoundException e) {
-            System.out.println("File Not Found");
-            return false;
-        }
-    }
-
     public ArrayList<Staff> GetStaff() throws FileNotFoundException
     {
         ArrayList<Staff> staff = new ArrayList<>();

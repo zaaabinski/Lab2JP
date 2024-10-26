@@ -21,9 +21,9 @@ public class Main {
 
                  SearchForSolution SFS = new SearchForSolution(staff, projects);
 
-                 ArrayList<Project> bestSolution = SFS.StartSearching();
+                 ArrayList<Project> bestProjectArrangement = SFS.StartSearching();
 
-                 ShowResult(bestSolution);
+                 ShowResult(bestProjectArrangement);
          }
          catch(FileNotFoundException e) {
             System.out.println("Wrong arguments use -h if you need help");
